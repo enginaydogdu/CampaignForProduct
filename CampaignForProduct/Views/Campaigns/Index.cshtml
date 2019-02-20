@@ -1,51 +1,45 @@
 ﻿@model IEnumerable<CampaignForProduct.Models.Campaign>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Campaigns";
 }
 
-<h2>Index</h2>
+<h2>Campaigns</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Start)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.End)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Start)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.End)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
+<table class="table table-bordered table-hover" id="campaigns">
+    <thead>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Name)</td>
+            <td>@Html.DisplayNameFor(model => model.Product)</td>
+            <td>@Html.DisplayNameFor(model => model.Start)</td>
+            <td>@Html.DisplayNameFor(model => model.End)</td>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>    
 </table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#campaigns").DataTable({
+                serverSide: true,
+                processing: true,
+                ajax: {
+                    url: "/api/campaigns",
+                    dataSrc: ""
+                },
+                columns: [
+                    { data: "name" },
+                    { data: "product.name" },
+                    { data: "start" },
+                    { data: "end" }                                        
+                ]
+            });
+        })
+    </script>        
+}

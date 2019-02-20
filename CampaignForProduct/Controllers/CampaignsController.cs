@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using CampaignForProduct.Dtos;
 using CampaignForProduct.Models;
 using CampaignForProduct.ViewModels;
 
@@ -22,10 +20,8 @@ namespace CampaignForProduct.Controllers
 
         // GET: Campaigns
         public ActionResult Index()
-        {
-            var campaigns = _context.Campaigns.ToList();
-            //return View(_context.Campaigns.ToList());
-            return View(campaigns);
+        {            
+            return View();
         }
 
         // GET: Campaigns/Details/5
@@ -50,7 +46,7 @@ namespace CampaignForProduct.Controllers
             var viewModel = new NewCampaignViewModel
             {
                 Products = products
-            };
+            };            
 
             return View(viewModel);
         }
