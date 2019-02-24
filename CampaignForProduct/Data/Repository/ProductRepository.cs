@@ -1,9 +1,7 @@
 ﻿using CampaignForProduct.Models;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Web;
 
 namespace CampaignForProduct.Data.Repository
 {
@@ -15,7 +13,6 @@ namespace CampaignForProduct.Data.Repository
         {
             _context = context;
         }
-
 
         public string AddProduct(Product product)
         {
@@ -33,11 +30,9 @@ namespace CampaignForProduct.Data.Repository
             return product.Id;
         }
 
-        public IQueryable<Product> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
-            var data = _context.Products.AsQueryable();
-            
-            data = data.OrderBy(x => x.Name);
+            var data = _context.Products.OrderBy(x => x.Name).ToList();
 
             return data;
         }

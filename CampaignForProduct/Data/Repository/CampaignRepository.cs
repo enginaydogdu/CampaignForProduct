@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Web;
 
 namespace CampaignForProduct.Data.Repository
 {
@@ -16,7 +15,7 @@ namespace CampaignForProduct.Data.Repository
             _context = context;
         }
 
-        public IQueryable<Campaign> GetPaginated(bool filter, int initialPage, int pageSize, out int totalRecords, out int recordsFiltered)
+        public IEnumerable<Campaign> GetPaginated(bool filter, int initialPage, int pageSize, out int totalRecords, out int recordsFiltered)
         {
             var data = _context.Campaigns.Include("Product").AsQueryable();
             totalRecords = data.Count();
@@ -31,8 +30,8 @@ namespace CampaignForProduct.Data.Repository
                 .OrderBy(x => x.Name)
                 .Skip(initialPage * pageSize)
                 .Take(pageSize);
-
-            return data;
+                
+            return data.ToList();
         }
 
         public string AddCampaign(Campaign campaign)
@@ -50,6 +49,5 @@ namespace CampaignForProduct.Data.Repository
 
             return campaign.Id;
         }
-
     }
 }

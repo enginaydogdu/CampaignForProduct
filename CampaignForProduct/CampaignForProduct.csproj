@@ -176,10 +176,11 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMapper\AutoMapperWrapper.cs" />
+    <Compile Include="AutoMapper\IAutoMapperWrapper.cs" />
     <Compile Include="Controllers\Api\CampaignsController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\CampaignsController.cs" />
@@ -228,6 +229,10 @@
     <Compile Include="Migrations\201902241101202_ChangeProductModel1.cs" />
     <Compile Include="Migrations\201902241101202_ChangeProductModel1.Designer.cs">
       <DependentUpon>201902241101202_ChangeProductModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902241813485_RemoveIsActive.cs" />
+    <Compile Include="Migrations\201902241813485_RemoveIsActive.Designer.cs">
+      <DependentUpon>201902241813485_RemoveIsActive.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Campaign.cs" />
@@ -657,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902241101202_ChangeProductModel1.resx">
       <DependentUpon>201902241101202_ChangeProductModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902241813485_RemoveIsActive.resx">
+      <DependentUpon>201902241813485_RemoveIsActive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

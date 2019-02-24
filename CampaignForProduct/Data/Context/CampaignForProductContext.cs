@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
 namespace CampaignForProduct.Models
 {
@@ -21,12 +17,5 @@ namespace CampaignForProduct.Models
 
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<Product> Products { get; set; }
-
     }
-
-    //public interface ICampaignForProductContext
-    //{
-    //    DbSet<Campaign> Campaigns { get; set; }
-    //    DbSet<Product> Products { get; set; }
-    //}
 }

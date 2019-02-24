@@ -1,11 +1,11 @@
 ﻿using CampaignForProduct.Models;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace CampaignForProduct.Data
 {
     public interface IProductRepository<T> where T : class
     {
-        IQueryable<T> GetProducts();
+        IEnumerable<T> GetProducts();
 
         string AddProduct(Product product);        
     }

@@ -25,7 +25,5 @@ namespace CampaignForProduct.Models
         [Column(TypeName = "date")]
         //[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime End { get; set; }
-
-        public bool IsActive { get; set; }
     }
 }
