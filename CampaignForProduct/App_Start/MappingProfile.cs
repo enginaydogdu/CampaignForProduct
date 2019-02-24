@@ -16,6 +16,7 @@ namespace CampaignForProduct.App_Start
             CreateMap<CampaignDto, Campaign>();
 
             CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
         }
     }
 }

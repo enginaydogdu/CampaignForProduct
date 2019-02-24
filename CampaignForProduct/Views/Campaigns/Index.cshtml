@@ -9,37 +9,50 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<label><input type="checkbox" id="checkbox" value="value">Show Active</label>
 <table class="table table-bordered table-hover" id="campaigns">
     <thead>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.Name)</td>
-            <td>@Html.DisplayNameFor(model => model.Product)</td>
-            <td>@Html.DisplayNameFor(model => model.Start)</td>
-            <td>@Html.DisplayNameFor(model => model.End)</td>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Product)</th>
+            <th>@Html.DisplayNameFor(model => model.Start)</th>
+            <th>@Html.DisplayNameFor(model => model.End)</th>
         </tr>
     </thead>
-    <tbody>
-    </tbody>    
+    <tbody></tbody>
 </table>
 
 @section scripts
 {
     <script>
         $(document).ready(function () {
-            $("#campaigns").DataTable({
+            
+            var oTable = $("#campaigns").DataTable({
                 serverSide: true,
                 processing: true,
+                ordering: false,
+                searching: false,
+                paging: true,
                 ajax: {
-                    url: "/api/campaigns",
-                    dataSrc: ""
+                    url: "/api/Campaigns",
+                    type: "GET",
+                    data: function (d) {
+                        d.filter = $('#checkbox').is(':checked');
+                    },
+                    dataSrc: "data"
                 },
                 columns: [
                     { data: "name" },
                     { data: "product.name" },
                     { data: "start" },
-                    { data: "end" }                                        
+                    { data: "end" }
                 ]
             });
+
+            $('#checkbox').on("click", function (e) {
+                oTable.draw();
+            });
         })
-    </script>        
+    </script>
 }

@@ -19,11 +19,9 @@ namespace CampaignForProduct.Dtos
 
         public ProductDto Product { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime Start { get; set; }
+        public string Start { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime End { get; set; }
+        public string End { get; set; }
 
         public bool IsActive { get; set; }
     }

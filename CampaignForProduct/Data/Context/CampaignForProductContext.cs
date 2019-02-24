@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CampaignForProduct.Models
 {
-    public class CampaignForProductContext : DbContext, ICampaignForProductContext
+    public class CampaignForProductContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -21,11 +21,12 @@ namespace CampaignForProduct.Models
 
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<Product> Products { get; set; }
+
     }
 
-    public interface ICampaignForProductContext
-    {
-        DbSet<Campaign> Campaigns { get; set; }
-        DbSet<Product> Products { get; set; }
-    }
+    //public interface ICampaignForProductContext
+    //{
+    //    DbSet<Campaign> Campaigns { get; set; }
+    //    DbSet<Product> Products { get; set; }
+    //}
 }

@@ -1,0 +1,44 @@
+﻿@*@model IEnumerable<CampaignForProduct.Models.Product>*@
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-hover" id="products">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Name")</th>            
+        </tr>
+    </thead>    
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("#products").DataTable({
+                serverSide: false,
+                processing: true,
+                ordering: false,
+                searching: false,
+                paging: true,
+                ajax: {
+                    url: "/api/Products",
+                    type: "GET",       
+                    dataSrc: ""
+                },
+                columns: [
+                    { data: "name" }                    
+                ]
+            });
+            
+        })
+    </script>
+
+}
